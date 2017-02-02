@@ -15,13 +15,11 @@ Word.prototype.count = function(inputString) {
   };
 
   function wordsCounter(word) {
-    if(response[word] === undefined) {
+    if(word == 'constructor') {
+      response[word] = 1;
+    } else if(response[word] === undefined) {
       if(word != '' || word != "") {
-        if(word != "constructor") {
-          response[word] = 1;
-        } else {
-          response["constructor"] = 1;
-        };
+        response[word] = 1;
       };
     } else {
       response[word] += 1;
@@ -32,8 +30,6 @@ Word.prototype.count = function(inputString) {
   var arrayOfWords = treatment(inputString);
   arrayOfWords.forEach(removesSideQuotes);
   arrayOfWords.forEach(wordsCounter);
-  console.log(response);
-
   return response;
 };
 
