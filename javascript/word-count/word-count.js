@@ -3,8 +3,8 @@ var Word = function() {};
 Word.prototype.count = function(inputString) {
 
   function treatment(sentence) {
-    var re = /([.,*+?¿^=!¡:${}()%&@|\[\]\/\\\n\t])/gi;
-    sentence = sentence.replace(re, ' ');
+    var reg = /([.,*+?¿^=!¡:${}()%&@|\[\]\/\\\n\t])/gi;
+    sentence = sentence.replace(reg, ' ');
     sentence = sentence.toLowerCase().trim();
     return sentence.split(' ');
   };
@@ -17,10 +17,10 @@ Word.prototype.count = function(inputString) {
   function wordsCounter(word) {
     if(response[word] === undefined) {
       if(word != '' || word != "") {
-        if(word != 'constructor') {
+        if(word != "constructor") {
           response[word] = 1;
         } else {
-          response.constructor = 1;
+          response["constructor"] = 1;
         };
       };
     } else {
