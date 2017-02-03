@@ -1,24 +1,24 @@
 var Isogram = function(word) {
-  this.word = word.toLowerCase().replace(/[- ]/gi, '');
+  this.word = word;
 };
 
 Isogram.prototype.isIsogram = function () {
-  var isogram = true;
 
-  for(var i = 0; i < this.word.length-1; i++) {
-    if(isogram) {
-      for(var j = i+1; j < this.word.length; j++) {
-        if(this.word[i] == this.word[j]) {
-          isogram = false;
-          break;
-        }
-      }
-    } else {
-      break;
-    }
-  }
+  function convertingToArray(word) {
+    word = word.toLowerCase().replace(/[- ]/gi, '');
+    var letters = word.split('').sort();
+    return letters;
+  };
 
-  return isogram;
+  function twoLettersAlikeFollowed(letter, index, letters) {
+    return letter == letters[index+1];
+  };
+
+  var response = true;
+  var letters = convertingToArray(this.word);
+  response = !letters.some(twoLettersAlikeFollowed);
+  return response;
+  
 };
 
 module.exports = Isogram;
