@@ -1,7 +1,7 @@
 class Gigasecond
 
   def self.from(date)
-    return Time.utc(2043, 1, 1, 1, 46, 40)
+    return date+1000000000
   end
 
 end
