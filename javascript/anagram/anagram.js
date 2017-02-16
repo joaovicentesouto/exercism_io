@@ -4,10 +4,14 @@ var Anagram = function(word) {
 
 Anagram.prototype.matches = function (arrayOfWords) {
 
-  function logicForEachConstructor(originalWord, formattedWord) {
+  function logicForEachConstructor(baseWord, matches) {
+    
+    var originalBaseWord = baseWord.toLowerCase();
+    var formattedBaseWord = originalBaseWord.split('').sort().join('');
+
     return function(currentWord) {
       var anagramPossible = currentWord.toLowerCase().split('').sort().join('');
-      if(originalWord != currentWord.toLowerCase() && formattedWord == anagramPossible) {
+      if(originalBaseWord != currentWord.toLowerCase() && formattedBaseWord == anagramPossible) {
           matches.push(currentWord);
       };
     };
@@ -18,10 +22,7 @@ Anagram.prototype.matches = function (arrayOfWords) {
   };
 
   var matches = [];
-  var originalBaseWord = this.baseWord.toLowerCase();
-  var FormattedBaseWord = originalBaseWord.split('').sort().join('');
-
-  var logicForEach = logicForEachConstructor(originalBaseWord, FormattedBaseWord);
+  var logicForEach = logicForEachConstructor(this.baseWord, matches);
   arrayOfWords.forEach(logicForEach);
 
   return matches;
