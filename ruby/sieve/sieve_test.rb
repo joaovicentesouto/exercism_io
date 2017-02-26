@@ -2,6 +2,7 @@
 gem 'minitest', '>= 5.0.0'
 require 'minitest/autorun'
 require_relative 'sieve'
+require 'minitest/pride'
 
 # Test data version:
 # 43d62d1
